@@ -1,0 +1,13 @@
+def swap_bits(x, p1, p2, n):
+    mask1 = (1 << n) - 1  
+    bits1 = (x >> p1) & mask1
+    bits2 = (x >> p2) & mask1
+    mask_p1 = mask1 << p1
+    mask_p2 = mask1 << p2
+    x &= ~(mask_p1 | mask_p2)
+    x |= (bits1 << p2) | (bits2 << p1)
+    return x
+input_values = input().split()
+X, P1, P2, N = map(int, input_values)
+result = swap_bits(X, P1, P2, N)
+print(result)
